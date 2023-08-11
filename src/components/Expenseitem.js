@@ -3,6 +3,7 @@ import React from 'react';
 import './Expenseitem.css';
 import ExpenseDate from './ExpenseDate';
 import Card from './UI/Card';
+import { click } from '@testing-library/user-event/dist/click';
 
 const ExpenseItem = ({ title, price: propsPrice, date }) => {
   // console.log(props);
@@ -29,15 +30,22 @@ const ExpenseItem = ({ title, price: propsPrice, date }) => {
   // 숫자를 원화표기법으로 바꾸기
   const formattedPrice = new Intl.NumberFormat('ko-KR').format(propsPrice);
 
+  const clickHandler = e => {
+    console.log(`수정!`);
+    console.log(e.target);
+  };
+
+
+
   return (
-    <Card className='circle'>
-      <div className="expense-item">
-        <ExpenseDate date={date} />
-        <div className="expense-item__description">
-          <h2>{title}</h2>
-          <div className="expense-item__price">{formattedPrice}원</div>
-        </div>
+    <Card className="expense-item">
+      <ExpenseDate date={date} />
+      <div className="expense-item__description">
+        <h2>{title}</h2>
+        <div className="expense-item__price">{formattedPrice}원</div>
       </div>
+      <button id="btn" onMouseOver={clickHandler}>수정</button>
+      <button id="btn" onMouseOver={e=>{console.log('삭제!');}}>삭제</button>
     </Card>
   );
 };

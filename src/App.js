@@ -26,13 +26,6 @@ const App = () => {
     <>
       {/* 형제를 넣고싶을때는 React.Fragment로 감싸준다 == <> </> */}
       <ExpenseList items={expenses} />
-      <Hello>
-        <ul>
-          <li>사과</li>
-          <li>포도</li>
-          <li>복숭아</li>
-        </ul>
-      </Hello>
     </>
   );
 };
