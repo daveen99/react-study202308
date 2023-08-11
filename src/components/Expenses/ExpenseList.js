@@ -1,12 +1,25 @@
 import React from 'react';
 import Expenseitem from './Expenseitem';
 import './ExpenseList.css';
+import Card from '../UI/Card';
+import ExpenseFilter from './ExpenseFilter';
 
 
 const ExpenseList = ({ items }) => {
+
+
+  const filterChangeHandler = (selectedYear) => {
+    console.log(selectedYear);
+  };
+
+
   return (
-    <div className="expenses">
+    <Card className="expenses">
       {/* 숫자, 논리등의 데이터를 보낼때는 중괄호 */}
+      {/* on이 붙으면 함수를 보낸다는 관례 */}
+      <ExpenseFilter onChangeFilter={filterChangeHandler}/>
+
+
       <Expenseitem
         title={items[0].title}
         price={items[0].price}
@@ -23,7 +36,7 @@ const ExpenseList = ({ items }) => {
         price={items[2].price}
         date={items[2].date}
       />
-    </div>
+    </Card>
   );
 };
 
