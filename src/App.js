@@ -1,6 +1,6 @@
 import React from 'react';
-import ExpenseList from './components/ExpenseList';
-import Hello from './Hello';
+import ExpenseList from './components/Expenses/ExpenseList';
+import NewExpense from './components/NewExpense/NewExpense';
 
 const App = () => {
   // 지출 항목 객체 배열
@@ -28,6 +28,7 @@ const App = () => {
   return (
     <>
       {/* 형제를 넣고싶을때는 React.Fragment로 감싸준다 == <> </> */}
+      <NewExpense />
       <ExpenseList items={expenses} />
     </>
   );
