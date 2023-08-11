@@ -22,6 +22,9 @@ const App = () => {
     },
   ];
 
+
+  console.log('App 실행!!');
+
   return (
     <>
       {/* 형제를 넣고싶을때는 React.Fragment로 감싸준다 == <> </> */}
