@@ -1,48 +1,48 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './ExpenseForm.css';
 
-const ExpenseForm = () => {
-
+const ExpenseForm = ({onSaveExpense}) => {
   const [number, setNumber] = useState(0);
   const [userInput, setUserInput] = useState({
     title: '',
     price: '',
-    date: ''
+    date: '',
   });
 
   const titleChangeHandler = (e) => {
-    setUserInput({
-        ...userInput,
-        title: e.target.value
-
-    });
+    setUserInput((prevUserInput) => ({
+      ...prevUserInput,
+      title: e.target.value,
+    }));
   };
 
   const priceChangeHandler = (e) => {
     setUserInput({
-        ...userInput,
-        price: e.target.value
+      ...userInput,
+      price: e.target.value,
     });
   };
 
   const dateChangeHandler = (e) => {
     setUserInput({
-        ...userInput,
-        date: e.target.value
+      ...userInput,
+      date: e.target.value,
     });
   };
 
   const formSubmitHandler = (e) => {
     e.preventDefault(); // submit 차단
     console.log('submit 버튼을 누름!');
-    
+
+    onSaveExpense(userInput);
+
     console.log(userInput);
 
     // 입력창 리셋
     setUserInput({
-        title: '',
-        price: '',
-        date: ''
+      title: '',
+      price: '',
+      date: '',
     });
   };
 

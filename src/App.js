@@ -25,10 +25,17 @@ const App = () => {
 
   console.log('App 실행!!');
 
+
+  //ExpenseForm에게 내려보낼 함수
+  const addExpenseHandler = (newExpense) => {
+    console.log('App 컴포넌트에서 응답함');
+    console.log(newExpense);
+  }
+
   return (
     <>
       {/* 형제를 넣고싶을때는 React.Fragment로 감싸준다 == <> </> */}
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandler}/>
       <ExpenseList items={expenses} />
     </>
   );
