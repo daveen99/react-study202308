@@ -6,19 +6,28 @@ const App = () => {
   // 지출 항목 객체 배열
   const expenses = [
     {
+      id: 1,
       title: '바나나',
       price: 2000,
       date: new Date(2023, 3 - 1, 23),
     },
     {
+      id: 2,
       title: 'BBQ 치킨',
       price: 27000,
-      date: new Date(2023, 5 - 1, 21),
+      date: new Date(2022, 5 - 1, 21),
     },
     {
+      id: 3,
       title: '피자알볼로',
       price: 28000,
       date: new Date(2023, 8 - 1, 11),
+    },
+    {
+      id: 4,
+      title: '엽기떡볶이',
+      price: 17000,
+      date: new Date(2021, 3 - 1, 28),
     },
   ];
 

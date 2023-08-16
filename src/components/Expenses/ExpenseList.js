@@ -1,41 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Expenseitem from './Expenseitem';
 import './ExpenseList.css';
 import Card from '../UI/Card';
 import ExpenseFilter from './ExpenseFilter';
 
-
 const ExpenseList = ({ items }) => {
 
+  // 선택된 연도 상태값 관리
+  const [filteredYear, setFilteredYear] = useState(new Date().getFullYear().toString());
 
+  // 자식 컴포넌트 ExpenseFilter에 있는 선택연도를 끌어올리는 콜백함수
   const filterChangeHandler = (selectedYear) => {
-    console.log(selectedYear);
+    // console.log('ExpenseList: ' + selectedYear);
+    setFilteredYear(selectedYear);
   };
 
+  // ExpenseItem을 동적 렌더링하기
+  // const iterateExpenseItem = () => {
+  //   return items.map((item) => (
+  //     <ExpenseItem
+  //       title={item.title}
+  //       price={item.price}
+  //       date={item.date}
+  //     />
+  //   ));
+  // };
 
   return (
     <Card className="expenses">
-      {/* 숫자, 논리등의 데이터를 보낼때는 중괄호 */}
-      {/* on이 붙으면 함수를 보낸다는 관례 */}
-      <ExpenseFilter onChangeFilter={filterChangeHandler}/>
+      <ExpenseFilter onChangeFilter={filterChangeHandler} />
 
-
-      <Expenseitem
-        title={items[0].title}
-        price={items[0].price}
-        date={items[0].date}
-        // abc={[1,2,3]}
-      />
-      <Expenseitem
-        title={items[1].title}
-        price={items[1].price}
-        date={items[1].date}
-      />
-      <Expenseitem
-        title={items[2].title}
-        price={items[2].price}
-        date={items[2].date}
-      />
+      {items
+        .filter(item => item.date.getFullYear().toString() === filteredYear)
+        .map(({ id, title, price, date }) => (
+        <Expenseitem
+          key={id}
+          title={title}
+          price={price}
+          date={date}
+        />
+      ))}
     </Card>
   );
 };
