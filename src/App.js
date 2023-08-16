@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ExpenseList from './components/Expenses/ExpenseList';
 import NewExpense from './components/NewExpense/NewExpense';
 
 const App = () => {
+
   // 지출 항목 객체 배열
   const expenses = [
     {
@@ -32,20 +33,25 @@ const App = () => {
   ];
 
 
-  console.log('App 실행!!');
+  // 지출 객체 배열을 상태변수로 관리
+  // useState는 무조건 대괄호를 사용한다.
+  const [expenseList, setExpenseList] = useState(expenses);
 
 
   //ExpenseForm에게 내려보낼 함수
   const addExpenseHandler = (newExpense) => {
-    console.log('App 컴포넌트에서 응답함');
     console.log(newExpense);
+    
+    // 
+    setExpenseList([...expenseList, newExpense]);
   }
 
   return (
     <>
       {/* 형제를 넣고싶을때는 React.Fragment로 감싸준다 == <> </> */}
       <NewExpense onAddExpense={addExpenseHandler}/>
-      <ExpenseList items={expenses} />
+      <ExpenseList items={expenseList} />
+      {/* <ExpenseList items={expenses} /> */}
     </>
   );
 };
