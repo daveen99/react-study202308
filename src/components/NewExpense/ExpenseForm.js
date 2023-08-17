@@ -36,7 +36,7 @@ const ExpenseForm = ({onSaveExpense, onToggle}) => {
     const newExpense = {
       id: Math.random(),
       title: userInput.title,
-      price: userInput.price,
+      price: +userInput.price,
       date: new Date(userInput.date),
     }
 

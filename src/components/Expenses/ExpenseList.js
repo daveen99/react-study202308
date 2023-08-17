@@ -53,7 +53,7 @@ const ExpenseList = ({ items }) => {
         selected={filteredYear}
         onChangeFilter={filterChangeHandler}
       />
-      <ExpensesChart expenses={items}/>
+      <ExpensesChart expenses={filtereditems}/>
 
       {expenseContent}
     </Card>
