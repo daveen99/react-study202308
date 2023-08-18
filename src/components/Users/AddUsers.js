@@ -10,6 +10,9 @@ const AddUsers = ({ onAddUser }) => {
     age: '',
   });
 
+  // 에러 상태 관리
+  const [error, setError] = useState(null);
+
   const usernameChangeHandler = (e) => {
     setUserValue((prevUserValue) => ({
       ...prevUserValue,
@@ -29,10 +32,20 @@ const AddUsers = ({ onAddUser }) => {
 
     // 입력값 검증
     if (userValue.username.trim() === '' || userValue.age.trim() === '') {
+      setError({
+        title: '유효하지 않은 입력값',
+        message: '입력값은 공백으로 작성하면 안됩니다!'
+      });
       return;
     }
 
-    if (+userValue.age < 1) return;
+    if (+userValue.age < 1) {
+      setError({
+        title: '유효하지 않은 나이의 범위',
+        message: '나이는 1 이상의 숫자로 작성해주세요!'
+      });
+      return;
+    }
 
     onAddUser(userValue);
 
@@ -44,8 +57,8 @@ const AddUsers = ({ onAddUser }) => {
 
   return (
     // React.Fragment
-    <>
-      <ErrorModal title={'아무노래나'} message={'일단 틀어'}/>
+    <> 
+      {error && <ErrorModal title={error.title} message={error.message} onConfirm={() => setError(null)}/>}
       <Card className={styles.input}>
         <form onSubmit={userSubmitHandler}>
           <label htmlFor="username">이름</label>
