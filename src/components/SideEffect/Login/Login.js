@@ -5,10 +5,15 @@ import styles from './Login.module.css';
 import Button from '../../UI/Button/Button';
 
 const Login = ({ onLogin }) => {
+  // 이메일 입력값을 저장
   const [enteredEmail, setEnteredEmail] = useState('');
+  // 이메일 입력이 정상적인지 확인
   const [emailIsValid, setEmailIsValid] = useState();
+  // 패스워드 입력값을 저장
   const [enteredPassword, setEnteredPassword] = useState('');
+  // 패스워드 입력이 정상적인지 확인
   const [passwordIsValid, setPasswordIsValid] = useState();
+  // 이메일과 패스워드가 동시에 정상적인 상태인지 확인
   const [formIsValid, setFormIsValid] = useState(false);
 
   const emailChangeHandler = (e) => {
