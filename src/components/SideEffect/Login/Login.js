@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Card from '../../UI/Card';
 import styles from './Login.module.css';
@@ -16,20 +16,27 @@ const Login = ({ onLogin }) => {
   // 이메일과 패스워드가 동시에 정상적인 상태인지 확인
   const [formIsValid, setFormIsValid] = useState(false);
 
+
+
+  // 입력란을 모두 체크하여 form의 버튼 disabled를 해제하는 상태변수
+  // formIsValid의 사이드 이펙트를 처리하는 영역
+  useEffect(() => {
+    console.log('useEffect call in Login.js');
+    setFormIsValid(
+      enteredEmail.includes('@') && enteredPassword.trim().length > 6
+    );
+  }, [enteredEmail,enteredPassword]); 
+  // 이 배열에 상태변수를 넣어주면 그 상태변수가
+  // 바뀔때마다 useEffect를 재실행 합니다.
+
+
+
   const emailChangeHandler = (e) => {
     setEnteredEmail(e.target.value);
-
-    setFormIsValid(
-      e.target.value.includes('@') && enteredPassword.trim().length > 6
-    );
   };
 
   const passwordChangeHandler = (e) => {
     setEnteredPassword(e.target.value);
-
-    setFormIsValid(
-      e.target.value.trim().length > 6 && enteredEmail.includes('@')
-    );
   };
 
   const validateEmailHandler = () => {
