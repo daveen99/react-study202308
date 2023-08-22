@@ -21,10 +21,22 @@ const Login = ({ onLogin }) => {
   // 입력란을 모두 체크하여 form의 버튼 disabled를 해제하는 상태변수
   // formIsValid의 사이드 이펙트를 처리하는 영역
   useEffect(() => {
-    console.log('useEffect call in Login.js');
-    setFormIsValid(
-      enteredEmail.includes('@') && enteredPassword.trim().length > 6
-    );
+
+    const timer = setTimeout(() => {
+      console.log('useEffect call in Login.js');
+      setFormIsValid(
+        enteredEmail.includes('@') && enteredPassword.trim().length > 6
+      );
+    },1000);
+
+
+
+    // cleanup 함수 - 컴포넌트가 업데이트되거나 없어지기 전에 실행
+    return () => {
+      console.log('clean up!!');
+      clearTimeout(timer);
+    };
+
   }, [enteredEmail,enteredPassword]); 
   // 이 배열에 상태변수를 넣어주면 그 상태변수가
   // 바뀔때마다 useEffect를 재실행 합니다.
