@@ -1,23 +1,15 @@
-import React, { useState, useEffect, useContext } from 'react';
-import MainHeader from './components/SideEffect/MainHeader/MainHeader';
-import Home from './components/SideEffect/Home/Home';
-import Login from './components/SideEffect/Login/Login';
-import AuthContext from './store/auth-context';
-
+import React from "react";
+import Header from "./components/Food/Layout/Header";
+import Meals from "./components/Food/Meals/Meals";
 
 const App = () => {
 
-  const { isLoggedIn } = useContext(AuthContext);
-
-
-
   return (
     <>
-      <MainHeader />
-      <main>
-        {isLoggedIn && <Home />}
-        {!isLoggedIn && <Login />}
-      </main>
+      <Header />
+      <div id='main'>
+        <Meals />
+      </div>
     </>
   );
 };
