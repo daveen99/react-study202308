@@ -13,7 +13,7 @@ const cartReducer = (state, action) => {
     if (action.type === 'ADD'){
 
         const updatedItems = [...state.items, action.item];
-
+        // console.log(updatedItems);
         return {
             items: updatedItems
         }; // 이 액션에 대한 업데이트된 새로운 상태 반환

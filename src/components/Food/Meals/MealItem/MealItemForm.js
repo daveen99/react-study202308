@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Input from '../../../UI/Input/Input';
 import styles from './MealItemForm.module.scss';
 
-const MealItemForm = (props) => {
+const MealItemForm = ({id, onAddToCart}) => {
+
+  const [amount, setAmount] = useState(0);
+
+  const formSubmitHandelr = e => {
+    e.preventDefault();
+    onAddToCart(amount)
+  };
+
+  const amountHandler = amt => {
+    // console.log(`선택된 수량: ${amt}`);
+    setAmount(amt);
+  }
+
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={formSubmitHandelr}>
       <Input
+        onAdd={amountHandler}
         label='수량'
         input={{
-          id: 'amount_' + props.id,
+          id: 'amount_' + id,
           type: 'number',
           min: '1',
           max: '5',
