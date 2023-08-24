@@ -1,15 +1,13 @@
-
 import React from 'react';
 
-class Appitem extends React.Component {
+class AppItem extends React.Component {
+  render() {
+    return (
+      <div className="App">
+        <h1>메롱메롱</h1>
+      </div>
+    );
+  }
+}
 
-    render() {
-        return (
-            <div className="App">
-            <h1>메롱메롱</h1>
-          </div>
-        );
-    };
-}; 
-
-export default Appitem;
+export default AppItem;

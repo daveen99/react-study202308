@@ -16,8 +16,6 @@ const AddUsers = ({ onAddUser }) => {
   const userSubmitHandler = (e) => {
     e.preventDefault();
 
-    console.log(nameInput.current);
-
     const username = nameInput.current.value;
     const age = ageInput.current.value;
 

@@ -6,14 +6,13 @@ import Button from '../../UI/Button/Button';
 import AuthContext from '../../../store/auth-context';
 
 const Home = () => {
-  const authCtx = useContext(AuthContext); // 객체분해해서도 가능
-  // const { } ...
+  const { onLogout } = useContext(AuthContext);
   // console.log('authCtx: ', authCtx);
 
   return (
     <Card className={styles.home}>
       <h1>Welcome back!</h1>
-      <Button onClick={authCtx.onLogout}>Logout</Button>
+      <Button onClick={onLogout}>Logout</Button>
     </Card>
   );
 };

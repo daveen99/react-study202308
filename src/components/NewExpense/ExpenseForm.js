@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './ExpenseForm.css';
 
-const ExpenseForm = ({onSaveExpense, onToggle}) => {
+const ExpenseForm = ({ onSaveExpense, onToggle }) => {
+
   const [userInput, setUserInput] = useState({
     title: '',
     price: '',
@@ -9,10 +10,13 @@ const ExpenseForm = ({onSaveExpense, onToggle}) => {
   });
 
   const titleChangeHandler = (e) => {
-    setUserInput((prevUserInput) => ({
-      ...prevUserInput,
-      title: e.target.value,
-    }));
+    
+    setUserInput((prevUserInput) => 
+      ({
+        ...prevUserInput,
+        title: e.target.value
+      }));
+
   };
 
   const priceChangeHandler = (e) => {
@@ -31,29 +35,28 @@ const ExpenseForm = ({onSaveExpense, onToggle}) => {
 
   const formSubmitHandler = (e) => {
     e.preventDefault(); // submit 차단
-    console.log('submit 버튼을 누름!');
 
     const newExpense = {
       id: Math.random(),
       title: userInput.title,
       price: +userInput.price,
-      date: new Date(userInput.date),
-    }
+      date: new Date(userInput.date)
+    };
 
     onSaveExpense(newExpense);
-
-    // console.log(userInput);
 
     // 입력창 리셋
     setUserInput({
       title: '',
       price: '',
-      date: '',
+      date: ''
     });
+
     onToggle();
   };
 
   const cancelInsertHandler = () => {
+    // console.log('취소 버튼 누름!');
     onToggle();
   };
 

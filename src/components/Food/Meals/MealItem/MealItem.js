@@ -8,16 +8,15 @@ const MealItem = ({id, price, description, name}) => {
   // 컨텍스트에서 장바구니 추가함수를 받아옴
   const { addItem } = useContext(CartContext);
 
-  const addToCartHandler = ({ amount }) => {
-
+  const addToCartHandler = (amount) => {
     const item = {
       id: id,
       name: name,
       price: price,
-      amount: amount
+      amount: +amount
     };
     addItem(item);
-  }
+  };
 
   const { meal, description: desc, price: priceStyle } = styles;
 

@@ -8,8 +8,8 @@ const CourseInput = ({onAdd}) => {
   const [isValid, setIsValid] = useState(true);
 
   const textChangeHandler = (e) => {
-    if (e.target.value.trim() > 0) {
-        setIsValid(true);
+    if (e.target.value.trim().length > 0) {
+      setIsValid(true);
     }
     // console.log(e.target.value);
     setEnteredText(e.target.value);
@@ -20,8 +20,8 @@ const CourseInput = ({onAdd}) => {
     // console.log(enteredText);
 
     if (enteredText.trim().length === 0) {
-        setIsValid(false);
-        return;
+      setIsValid(false);
+      return;
     }
 
     onAdd(enteredText);
@@ -29,7 +29,7 @@ const CourseInput = ({onAdd}) => {
   };
 
   return (
-    <form onSubmit={formSubmitHandler}>                 {/* 단축평가 */}
+    <form onSubmit={formSubmitHandler}>
       <div className={`${styles['form-control']} ${!isValid && styles.invalid}`}>
         <label>나의 목표</label>
         <input

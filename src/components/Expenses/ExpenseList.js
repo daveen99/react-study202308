@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Expenseitem from './Expenseitem';
+import ExpenseItem from './ExpenseItem';
 import './ExpenseList.css';
 import Card from '../UI/Card';
 import ExpenseFilter from './ExpenseFilter';
@@ -28,17 +28,17 @@ const ExpenseList = ({ items }) => {
   //   ));
   // };
 
-  const filtereditems = items.filter(
+  const filteredItems = items.filter(
     (item) => item.date.getFullYear().toString() === filteredYear
   );
 
   // 조건부 렌더링을 위한 변수
   let expenseContent = <p>아직 등록된 지출이 없습니다</p>;
 
-  if (filtereditems.length > 0) {
-    expenseContent = filtereditems
+  if (filteredItems.length > 0) {
+    expenseContent = filteredItems
     .map(({ id, title, price, date }) => (
-      <Expenseitem
+      <ExpenseItem
         key={id}
         title={title}
         price={price}
@@ -53,7 +53,7 @@ const ExpenseList = ({ items }) => {
         selected={filteredYear}
         onChangeFilter={filterChangeHandler}
       />
-      <ExpensesChart expenses={filtereditems}/>
+      <ExpensesChart expenses={filteredItems} />
 
       {expenseContent}
     </Card>

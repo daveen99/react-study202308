@@ -139,24 +139,24 @@ const Login = () => {
     <Card className={styles.login}>
       <form onSubmit={submitHandler}>
         <Input
-          id="email"
           type="email"
+          id="email"
           label="E-Mail"
           value={emailState.value}
-          IsValid={emailIsValid}
+          isValid={emailIsValid}
           onChange={emailChangeHandler}
           onBlur={validateEmailHandler}
         />
-        <Input
-          id="password"
+        <Input 
           type="password"
+          id="password"
           label="Password"
           value={passwordState.value}
-          IsValid={passwordIsValid}
+          isValid={passwordIsValid}
           onChange={passwordChangeHandler}
           onBlur={validatePasswordHandler}
         />
-
+      
         <div className={styles.actions}>
           <Button
             type="submit"

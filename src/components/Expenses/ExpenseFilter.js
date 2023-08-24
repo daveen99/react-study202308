@@ -3,14 +3,12 @@ import './ExpenseFilter.css';
 
 const ExpenseFilter = ({selected, onChangeFilter}) => {
 
-    const dropdownChangeHandler = e => {
-        const selectedYear = e.target.value;
-        
-        // selectedYear가 ExpenseList에서 사용할 수 있도록 
-        // 올려보내세요.
-        onChangeFilter(selectedYear);
-    };
+  const dropdownChangeHandler = e => {
+    const selectedYear = e.target.value;
 
+    // selectedYear를 ExpenseList에서 사용할 수 있도록 올려보내보세요.
+    onChangeFilter(selectedYear);
+  };
 
   return (
     <div className="expenses-filter">

@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from './CartModal.module.scss';
-import Portal from '../Portal/Portal.js';
 
-const Backdrop = ({ onHide }) => {
-  return <div className={styles.backdrop} onClick={onHide}> </div>;
+import Portal from '../Portal/Portal';
+
+const Backdrop = ({onClose}) => {
+  return <div className={styles.backdrop} onClick={onClose} />;
 };
 
 const ModalOverlay = ({ children }) => {
@@ -14,13 +15,12 @@ const ModalOverlay = ({ children }) => {
   );
 };
 
-const CartModal = ({children, onHide}) => {
+const CartModal = ({children, onClose}) => {
   return (
     <>
       <Portal destId="backdrop-root">
-        <Backdrop onHide={onHide}/>
+        <Backdrop onClose={onClose} />
       </Portal>
-
       <Portal destId="overlay-root">
         <ModalOverlay>{children}</ModalOverlay>
       </Portal>

@@ -1,6 +1,6 @@
 import React from 'react';
 // import './CourseList.css';
-import CourceItem from './CourceItem';
+import CourseItem from './CourseItem';
 
 import styled from 'styled-components';
 
@@ -15,7 +15,7 @@ const CourseList = ({ items, onDelete }) => {
     <CourseUl>
       {items.map((item) => {
         return (
-          <CourceItem
+          <CourseItem
             key={item.id}
             item={item}
             onDelete={onDelete}
