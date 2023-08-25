@@ -29,6 +29,8 @@ const Cart = ({onClose}) => {
 
   const { items, totalPrice } = useContext(CartContext);
 
+  console.log(items);
+
   return (
     <CartModal onClose={onClose}>
       {/* 주문 내역 */}
