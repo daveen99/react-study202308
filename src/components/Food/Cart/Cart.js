@@ -48,7 +48,7 @@ const Cart = ({onClose}) => {
       </div>
       <div className={actions}>
         <button className={btnAlt} onClick={onClose}>닫기</button>
-        <button className={button}>주문</button>
+        {items.length > 0 && <button className={button}>주문</button>}
       </div>
     </CartModal>
   );
