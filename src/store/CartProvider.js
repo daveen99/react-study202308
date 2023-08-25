@@ -28,7 +28,7 @@ const cartReducer = (state, action) => {
     if (index === -1) { // 신규아이템
        updatedItems = [...state.items, newCartItem];
      } else { // 기존아이템: 수량만 1증가
-      prevCartItem.amount++;  // 복사된 아이템의 수량을 늘려줌
+      prevCartItem.amount += newCartItem.amount;  // 복사된 아이템의 수량을 늘려줌
       updatedItems = [...existingItems];   // 새롭게 복사 배열을 갱신
      }
 

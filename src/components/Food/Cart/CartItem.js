@@ -21,7 +21,7 @@ const CartItem = ({ cart }) => {
   const formatPrice = new Intl.NumberFormat('ko-KR').format(price);
 
   const cartAddItemHandler = () => {
-    addItem(cart);
+    addItem({...cart, amount: 1});
   }
 
   return (
